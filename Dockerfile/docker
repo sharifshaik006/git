@@ -1,0 +1,15 @@
+# Use the official Python image as the base image
+FROM python:3.9-slim-buster
+
+# Copy the source code into the container
+COPY src /src
+
+# Set the working directory
+WORKDIR /src
+
+# Upgrade pip and install the required dependency
+RUN python -m pip install --upgrade pip && \
+    pip install pytest
+
+# Command to run the tests
+CMD ["python", "-m", "pytest", "addition.py"]
